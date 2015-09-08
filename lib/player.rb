@@ -1,6 +1,7 @@
 class Player
 
   attr_accessor :harbor
+  attr_accessor :add_boat
   attr_reader :hits
   attr_reader :misses
 
