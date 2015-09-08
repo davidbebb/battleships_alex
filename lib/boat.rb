@@ -2,9 +2,20 @@ class Boat
 
   attr_accessor :boat_position
 
-  def initialize(x, y) #enter x and y as array coordinates eg.([0,1], [0,2])
-    @boat_position = [x, y]
+  def initialize(size, (y,x), orientation)
+    @boat_position = []
+    size.times do
+      boat_position << [y,x]
+      case orientation
+        when 'north'
+          y -= 1
+        when 'south'
+          y += 1
+        when 'east'
+          x += 1
+        when 'west'
+          x -= 1
+      end
+    end
   end
-
-
 end
