@@ -15,6 +15,11 @@ describe Player do
       subject.add_boat(boat)
       expect(subject.harbor.include? boat).to be true
     end
+
+    it 'raises error if ships overlap' do
+      subject.add_boat boat
+      expect{subject.add_boat(boat)}.to raise_error 'ship overlapping'
+    end
   end
 
   describe '#launch' do
