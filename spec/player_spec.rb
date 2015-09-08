@@ -10,6 +10,10 @@ describe Player do
 
   it { is_expected.to respond_to(:launch).with(2).arguments }
 
+  it { is_expected.to respond_to(:hit) }
+
+  it { is_expected.to respond_to(:miss) }
+
   describe '#add_boat' do
     it 'adds boat to players harbor array' do
       subject.add_boat(boat)
@@ -17,7 +21,7 @@ describe Player do
     end
 
     it 'raises error if ships overlap' do
-      subject.add_boat boat
+      subject.add_boat(boat)
       expect{subject.add_boat(boat)}.to raise_error 'ship overlapping'
     end
   end
@@ -29,4 +33,21 @@ describe Player do
       expect(boat.boat_position).to eql([[0,1]])
     end
   end
+
+  describe '#hit' do
+    it 'should add coordinates to hit array' do
+      subject.add_boat(boat)
+      subject.launch(subject, [0,0])
+      expect(subject.hits.include?([0,0])).to be true
+    end
+  end
+
+  describe '#miss' do
+    it 'should add coordinates to miss array' do
+      subject.add_boat(boat)
+      subject.launch(subject, [0,2])
+      expect(subject.misses.include?([0,2])).to be true
+    end
+  end
+
 end

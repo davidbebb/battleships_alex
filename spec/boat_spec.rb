@@ -14,4 +14,10 @@ describe Boat do
   it 'raises error if created out of bounds' do
     expect{Boat.new(3, 0, 8, 'east')}.to raise_error 'ship out of bounds'
   end
+
+  it 'informs player when boat has been destroyed' do
+    boat = Boat.new(1, 0, 0, 'north')
+    boat.boat_position.delete([0, 0])
+    expect(boat.destroyed?).to be true
+  end
 end

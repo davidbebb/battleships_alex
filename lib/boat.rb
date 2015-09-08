@@ -19,4 +19,8 @@ class Boat
       end
     end
   end
+
+  def destroyed?
+    self.boat_position.empty?
+  end
 end
