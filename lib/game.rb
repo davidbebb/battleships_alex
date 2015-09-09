@@ -11,18 +11,24 @@ class Game
   end
 
   def create_boats(player)
+    i=0
     @boat_sizes.each do |size|
-      puts "Enter y coordinate of large boat"
-      y = gets.chomp
-      puts "Enter x coordinate of large boat"
-      x = gets.chomp
-      puts "Enter orientation of large boat"
+      puts "For your boat of length #{size}."
+      puts "Enter y coordinate"
+      y = gets.chomp.to_i
+      puts "Enter x coordinate"
+      x = gets.chomp.to_i
+      puts "Enter orientation (N, S ,E, W)"
       orientation = gets.chomp
       boat = Boat.new(size, y, x, orientation)
       player.add_boat(boat)
+      instance_variable_set("@Boat#{i += 1}", boat)
       end
   end
 
 
 
 end
+
+
+#todo recieve boats overlap and deal with it - new boat?

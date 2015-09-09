@@ -3,6 +3,7 @@ require 'player'
 describe Player do
 
   let(:boat) { double :boat, boat_position: [[0,0],[0,1]] }
+  let(:boat2) { double :boat, boat_position: [[0,1],[0,2]] }
 
   it { is_expected.to respond_to(:harbor) }
 
@@ -22,7 +23,7 @@ describe Player do
 
     it 'raises error if ships overlap' do
       subject.add_boat(boat)
-      expect{subject.add_boat(boat)}.to raise_error 'ship overlapping'
+      expect{subject.add_boat(boat2)}.to raise_error 'ship overlapping'
     end
   end
 

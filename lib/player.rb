@@ -35,9 +35,10 @@ class Player
 
   def overlapping?(boat)
     @harbor.each do |ship|
-      if ship.boat_position == boat.boat_position
+      if (ship.boat_position & boat.boat_position) != []
         fail 'ship overlapping'
       end
     end
   end
+
 end

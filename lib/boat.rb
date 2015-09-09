@@ -8,13 +8,13 @@ class Boat
       fail 'ship out of bounds' if x > 2 || x < 0 || y > 2 || y < 0
       boat_position << [y,x]
       case orientation
-        when 'north'
+        when 'N'
           y -= 1
-        when 'south'
+        when 'S'
           y += 1
-        when 'east'
+        when 'E'
           x += 1
-        when 'west'
+        when 'W'
           x -= 1
       end
     end
